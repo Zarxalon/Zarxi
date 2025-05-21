@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zarxalon Freelancing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --purple: #a020f0;
+      --dark-bg: #000000;
+      --card-bg: #1e293b;
+      --helmet-size: 800px;
+      --purple: #a020f0;
+
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: var(--dark-bg);
+      color: white;
+      line-height: 1.6;
+    
+    }
+
+    /* Navigation */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 15px 20px;
+  z-index: 1000;
+  transform: translateY(-100%);
+  animation: slideDown 0.8s cubic-bezier(0.22, 1, 0.36, 1) 1.2s forwards;
+  /* Change this line: */
+  background:transparent; /* Changed from rgba(0, 0, 0, 0.9) to fully opaque */
+  backdrop-filter: none; /* Remove blur if you want completely solid */
+}
+  @keyframes slideDown {
+      to { transform: translateY(0); }
+    }
+
+.nav-pill {
+  /* Change this line: */
+  background: rgba(130, 45, 198, 1); /* Changed from rgba(130, 45, 198, 0.7) to fully opaque */
+  border-radius: 50px;
+  padding: 10px 40px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+    .nav-pill::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 16px;
+      letter-spacing: 1px;
+      position: relative;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--purple);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+        @media (max-width: 480px) {
+      .nav-pill {
+        padding: 8px 20px;
+      }
+      .nav-links {
+        gap: 15px;
+      }
+    }
+
+
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+    }
+        .helmet-container {
+      text-align: center;
+    }
+    
+    /* Animated Helmet */
+    .helmet {
+      width: min(var(--helmet-size), 90vw); /* Responsive sizing */
+      height: auto;
+      max-width: 800px;
+      animation: 
+        float 6s ease-in-out infinite,
+        glow 3s ease-in-out infinite alternate;
+    }
+    
+    /* Floating Animation */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(2deg);
+      }
+    }
+    
+
+
+    .title {
+      font-size: 2.5rem;
+      color: var(--purple);
+      margin-bottom: 15px;
+    }
+
+    .description {
+      max-width: 800px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+    }
+
+    .highlight {
+      color: var(--purple);
+    }
+
+    .cta-button {
+      background: var(--purple);
+      color: white;
+      padding: 7px 10px;
+      border-radius: 50px;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.3s;
+    }
+
+    .cta-button:hover {
+      background: #c95bff;
+    }
+
+
+/* About Section Styles */
+.about-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4rem;
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  background-color: var(--dark-bg);
+}
+
+.about-section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-image {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-image img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 10px;
+  box-shadow: 0 20px 40px rgba(160, 32, 240, 0.2);
+  animation: float 4s ease-in-out infinite;
+}
+
+.about-content {
+  flex: 1;
+  min-width: 300px;
+}
+
+.about-content h2 {
+  font-size: 3.5rem;
+  margin-bottom: 30px;
+  color: var(--purple);
+  position: relative;
+}
+
+.about-content h2::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  bottom: -15px;
+  left: 0;
+  background: linear-gradient(90deg, var(--purple), transparent);
+}
+
+.about-content p {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.brand {
+  color: var(--purple);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.brand:hover {
+  text-decoration: underline;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .about-section {
+    padding: 70px 20px;
+  }
+  
+  .about-content h2 {
+    font-size: 2.8rem;
+  }
+  
+  .about-content p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 30px;
+    padding: 60px 20px;
+  }
+  
+  .about-content h2::after {
+    left: 20%;
+    width: 60%;
+  }
+  
+  .about-image img {
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 50px 15px;
+  }
+  
+  .about-content h2 {
+    font-size: 2rem;
+  }
+  
+  .about-content p {
+    font-size: 1.1rem;
+  }
+  
+  .about-image, .about-content {
+    min-width: 100%;
+  }
+}
+
+
+
+    /* Services Section */
+    /* Service Card Enhancements */
+.service-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(160, 32, 240, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(160, 32, 240, 0.2);
+  border-color: var(--purple);
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(160, 32, 240, 0) 0%,
+    rgba(160, 32, 240, 0.05) 100%
+  );
+  transform: rotate(30deg);
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+  animation: shine 1.5s;
+}
+
+@keyframes shine {
+  100% {
+    left: 150%;
+  }
+}
+
+.service-icon {
+  font-size: 2.5rem;
+  color: var(--purple);
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  transform: scale(1.2);
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  color: white;
+  position: relative;
+  z-index: 1;
+}
+
+.service-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 1;
+}
+    .services-section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .services-section h2 {
+      font-size: 2.5rem;
+      color: var(--purple);
+      margin-bottom: 30px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .service-icon {
+      font-size: 2rem;
+      color: var(--purple);
+      margin-bottom: 15px;
+    }
+
+    /* Carousel */
+    /* Service Carousel */
+    .services-carousel {
+      padding: 3rem 0;
+      width: 100%;
+    
+    }
+
+    .services-title {
+      font-size: clamp(1.8rem, 5vw, 2.5rem);
+      color: var(--purple);
+      margin-bottom: 2rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .carousel-track {
+  display: flex;
+  padding: 1rem 0;
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+  gap: 1rem;
+
+    }
+
+    .carousel-track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .service-slide {
+  scroll-snap-align: center;
+  min-width: calc(100% - 2rem);
+  height: 400px; /* Base height */
+  margin: 0 1rem;
+  border-radius: 15px;
+  overflow: hidden;
+  flex-shrink: 0;
+    }
+    /* Adaptive Responsiveness */
+@media (min-width: 640px) {
+  .service-slide {
+    min-width: calc(50% - 1.5rem);
+    height: 350px;
+  }
+}
+
+@media (min-width: 768px) {
+  .service-slide {
+    min-width: calc(33.333% - 1.5rem);
+    height: 380px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .service-slide {
+    min-width: calc(25% - 1.5rem);
+    height: 400px;
+  }
+}
+
+/* Mobile Optimization */
+@media (max-width: 480px) {
+  .services-carousel {
+    padding: 2rem 0;
+  }
+  
+  .service-slide {
+    min-width: calc(100% - 1rem);
+    height: 300px;
+    margin: 0 0.5rem;
+  }
+  
+  .service-content {
+    padding: 1.2rem;
+  }
+  
+  .service-slide h3 {
+    font-size: 1.3rem;
+  }
+}
+
+    @media (min-width: 640px) {
+      .service-slide {
+        min-width: calc(50% - 2rem);
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .service-slide {
+        min-width: calc(33.333% - 2rem);
+      }
+    }
+
+    .service-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(30, 41, 59, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem;
+      transform: rotateY(90deg);
+      transform-origin: left center;
+      transition: transform 0.6s ease;
+      backface-visibility: hidden;
+    }
+
+    .service-slide.active .service-content {
+      transform: rotateY(0deg);
+    }
+
+    .service-icon {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: var(--purple);
+      margin-bottom: 1rem;
+    }
+
+    .service-slide h3 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .service-slide p {
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      line-height: 1.6;
+    }
+
+    /* Mobile hint */
+    .mobile-hint {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+      display: block;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-hint {
+        display: none;
+      }
+    }
+
+    /* Navigation dots */
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dot.active {
+      background: var(--purple);
+      transform: scale(1.2);
+    }
+
+
+    /* Giveaway Section */
+.giveaway-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.giveaway-title {
+  font-size: 3.5rem;
+  color: var(--purple);
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.giveaway-content {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.giveaway-image {
+  flex: 1;
+}
+
+.giveaway-text {
+  flex: 1;
+}
+
+.giveaway-img {
+  width: 100%;
+  max-width: 550px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(160, 32, 240, 0.25);
+  border: 3px solid var(--purple);
+  transform-style: preserve-3d;
+  animation: float 6s ease-in-out infinite;
+}
+
+.giveaway-text p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+}
+
+.highlight {
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.giveaway-footer {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.upcoming-events {
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.view-all-btn {
+  display: inline-block;
+  background: var(--purple);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 300;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 5px 20px rgba(160, 32, 240, 0.3);
+}
+
+.view-all-btn:hover {
+  background: #c95bff;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(160, 32, 240, 0.4);
+}
+
+.view-all-btn i {
+  margin-left: 10px;
+  transition: transform 0.4s ease;
+}
+
+.view-all-btn:hover i {
+  transform: translateX(8px);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotateX(5deg) rotateY(5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotateX(-5deg) rotateY(-5deg);
+  }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .giveaway-content {
+    flex-direction: column;
+  }
+  
+  .giveaway-title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+  
+  .giveaway-image {
+    margin-bottom: 40px;
+  }
+  
+  .giveaway-text {
+    text-align: center;
+  }
+  
+  .giveaway-img {
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 600px) {
+  .giveaway-title {
+    font-size: 2.5rem;
+  }
+  
+  .upcoming-events {
+    font-size: 2rem;
+  }
+  
+  .view-all-btn {
+    padding: 8px 25px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .giveaway-title {
+    font-size: 2rem;
+  }
+  
+  .giveaway-text p {
+    font-size: 1.1rem;
+  }
+  
+  .giveaway-img {
+    max-width: 350px;
+  }
+}
+
+    /* Contact Section */
+    /* Corrected Contact Title Styles */
+.contact-section h2 {
+  font-size: 3.5rem;
+  color: var(--purple);
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 2px;
+  position: relative;
+}
+
+.contact-section h2 span {
+  color: white;
+}
+
+/* Add gradient underline */
+.contact-section h2::after {
+  content: '';
+  position: absolute;
+  width: 150px;
+  height: 4px;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, var(--purple), transparent);
+}
+/* Response Messages */
+#formResponse {
+  display: none;
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 8px;
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.success-message {
+  color: #4BB543;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-message {
+  color: #FF3333;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.success-message i, .error-message i {
+  font-size: 1.5rem;
+}
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .contact-section h2 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-section h2 {
+    font-size: 2.5rem;
+  }
+  
+  .contact-section h2::after {
+    width: 100px;
+    height: 3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section h2 {
+    font-size: 2rem;
+  }
+}
+.contact-section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.contact-title {
+  font-size: 3.5rem;
+  color: var(--purple);
+  margin-bottom: 40px;
+  text-align: center;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.contact-title span {
+  color: white;
+}
+
+.contact-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 40px rgba(160, 32, 240, 0.1);
+}
+
+.contact-content {
+  flex: 1;
+}
+
+.contact-image {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  animation: float 6s ease-in-out infinite;
+
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-group i {
+  position: absolute;
+  left: 20px;
+  top: 18px;
+  color: var(--purple);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 15px 20px 15px 50px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(30, 41, 59, 0.7);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  padding-top: 20px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px rgba(160, 32, 240, 0.2);
+  outline: none;
+}
+
+.submit-btn {
+  background: var(--purple);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.4s ease;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background: #c95bff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(160, 32, 240, 0.3);
+}
+
+.submit-btn i {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover i {
+  transform: translateX(5px);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* Responsive Adjustments */
+
+@media (max-width: 1200px) {
+  .contact-image img {
+    max-width: 90%;  /* Slightly smaller on large tablets */
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-container {
+    flex-direction: column;
+    padding: 30px;
+  }
+  
+  .contact-title {
+    font-size: 3rem;
+    margin-bottom: 30px;
+  }
+  
+  .contact-image {
+    order: -1;  /* Move image above text on mobile */
+    margin-bottom: 30px;
+    width: 80%;  /* Constrain width */
+  }
+  
+  .contact-image img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 2.5rem;
+  }
+  
+  .contact-container {
+    padding: 25px 15px;
+  }
+  
+  .contact-image {
+    width: 100%;  /* Full width on small devices */
+  }
+  
+  .contact-image img {
+    width: 100%;  /* No extra padding */
+    border-radius: 10px;  /* Slightly rounder corners */
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+    .contact-image img {
+    animation: none;  /* Disable float animation on tiny screens */
+  }
+}
+
+
+@media (max-width: 600px) {
+  .contact-title {
+    font-size: 2.5rem;
+  }
+  
+  .contact-container {
+    padding: 25px 20px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 12px 20px 12px 45px;
+  }
+  
+  .submit-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 2rem;
+  }
+  
+  .contact-image img {
+    max-width: 350px;
+  }
+}
+/* Sponsors Section */
+.sponsors-section {
+  padding: 80px 20px;
+  background: var(--dark-bg);
+  text-align: center;
+}
+
+.sponsors-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sponsors-title {
+  font-size: 3rem;
+  color: var(--purple);
+  margin-bottom: 60px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.sponsors-title span {
+  color: white;
+}
+
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsor-card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 30px;
+  transition: all 0.4s ease;
+  border: 1px solid rgba(160, 32, 240, 0.1);
+}
+
+.sponsor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(160, 32, 240, 0.2);
+  border-color: var(--purple);
+}
+
+.sponsor-logo {
+  max-width: min(180px, 25vw); /* Never wider than 25% of viewport */
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  filter: grayscale(100%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.sponsor-card:hover .sponsor-logo {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .sponsors-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .sponsors-title {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sponsors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .sponsors-title {
+    font-size: 2rem;
+  }
+}
+
+    /* Footer */
+    .site-footer {
+      background: #000;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 1.2rem;
+    }
+
+    .footer-links {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    /* Responsive Adjustments */
+    @media (min-width: 768px) {
+      .navbar {
+        padding: 20px;
+      }
+      
+      .nav-links {
+        gap: 25px;
+      }
+      
+      .nav-links a {
+        font-size: 16px;
+      }
+      
+      .hero {
+        padding: 60px 20px;
+      }
+      
+      .title {
+        font-size: 3rem;
+      }
+      
+      
+      .about-section,
+      .services-section,
+      .giveaway-section,
+      .contact-section {
+        padding: 60px 20px;
+      }
+      
+      .contact-container {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        text-align: left;
+      }
+      
+      .contact-form {
+        flex: 1;
+      }
+      
+      .contact-image {
+        flex: 1;
+      }
+      
+      .contact-image img {
+        margin-top: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+ <!-- HTML (Same as original) -->
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <nav class="nav-pill">
+      <ul class="nav-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#about">ABOUT US</a></li>
+        <li><a href="#services">OUR SERVICES</a></li>
+        <li><a href="#giveaway">GIVE AWAY</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Rest of your content -->
+  <div style="height: 50px; padding-top: 100px; text-align: center;">
+  </div>
+
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <img src="public/assets/Acotronix.png" alt="Helmet Logo" class="helmet"/>
+
+    <p class="description">
+      We're not just freelancers — we're your <span class="highlight">creative tech partners</span>.
+      Collaborators in your vision, driven by passion and precision.
+      Together, we don't just build — we make it unforgettable.
+    </p>
+    <a href="#services" class="cta-button" >EXPLORE OUR SERVICES</a>  
+  </section>
+
+  <!-- About Section -->
+<!-- About Section -->
+<!-- About Section -->
+<!-- About Section -->
+<section id="about" class="about-section">
+  <div class="about-image">
+    <img src="public/assets/WhatsApp Image 2025-04-29 at 6.50.01 PM.jpeg" alt="Zarxalon Team" />
+  </div>
+  <div class="about-content">
+    <h2>ABOUT US</h2>
+    <p>
+      At <a href="#" class="brand">Zarxalon</a>, we mix clean code, bold design, and a hint of madness
+      to craft digital experiences that just click. From ambitious startups to growing enterprises,
+      we build tech that scales, adapts, and actually excites. We're not just your tech partners —
+      we're the brains behind your next big breakthrough (and probably your best Slack jokes, too).
+    </p>
+  </div>
+</section>
+  
+  <!-- Services Section -->
+  <section id="services" class="services-section">
+    <h2>OUR SERVICES</h2>
+    
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-paint-brush"></i>
+        </div>
+        <h3>Logo Creation</h3>
+        <p>Unique and memorable logos that represent your brand identity perfectly.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-code"></i>
+        </div>
+        <h3>Website Development</h3>
+        <p>Responsive, fast-loading websites tailored to your business needs.</p>
+      </div>
+      
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fas fa-film"></i>
+        </div>
+        <h3>Video Animation</h3>
+        <p>Engaging animations that tell your story and captivate your audience.</p>
+      </div>
+      
+      <div class="service-card">
+        <div class="service-icon">
+          <i class="fab fa-discord"></i>
+        </div>
+        <h3>Discord Bot Development</h3>
+        <p>Custom Discord bots to automate tasks and enhance your server.</p>
+      </div>
+      <!-- Video Editing Card -->
+<div class="service-card">
+  <div class="service-icon">
+    <i class="fas fa-film"></i>
+  </div>
+  <h3>Professional Video Editing</h3>
+  <p>Cinematic cuts, transitions, color grading and effects to make your content stand out.</p>
+</div>
+
+<!-- UI/UX Design Card -->
+<div class="service-card">
+  <div class="service-icon">
+    <i class="fas fa-object-group"></i>
+  </div>
+  <h3>UI/UX Design</h3>
+  <p>Intuitive interfaces and seamless user experiences that drive engagement and conversions.</p>
+</div>
+
+<!-- App Development Card -->
+<div class="service-card">
+  <div class="service-icon">
+    <i class="fas fa-mobile-alt"></i>
+  </div>
+  <h3>Mobile App Development</h3>
+  <p>Custom iOS and Android apps built with Flutter/React Native for cross-platform efficiency.</p>
+</div>
+
+<!-- Digital Marketing Card -->
+<div class="service-card">
+  <div class="service-icon">
+    <i class="fas fa-bullhorn"></i>
+  </div>
+  <h3>Digital Marketing</h3>
+  <p>Comprehensive strategies including SEO, PPC, and social media to grow your business.</p>
+</div>
+    </div>
+    
+  </section>
+  
+
+  <!-- Carousel Section -->
+  <!-- Services Carousel -->
+  <section class="services-carousel">
+   
+    
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <!-- Service 1 -->
+        <div class="service-slide">
+          <img src="public/assets/ChatGPT Image May 11, 2025, 09_10_15 PM.png" alt="Web Design" class="service-image">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <h3>Website Development</h3>
+            <p>Custom responsive websites built with modern frameworks for optimal performance across all devices.</p>
+          </div>
+        </div>
+
+        
+        <!-- Service 2 -->
+        <div class="service-slide">
+          <img src="public/assets/ChatGPT Image May 11, 2025, 09_08_09 PM.png" alt="Logo Design" class="service-image">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-paint-brush"></i>
+            </div>
+            <h3>Logo Creation</h3>
+            <p>Crafting unique brand identities that make your business stand out from the competition.</p>
+          </div>
+        </div>
+        
+        <!-- Service 3 -->
+        <div class="service-slide">
+          <img src="public/assets/ChatGPT Image May 11, 2025, 09_38_55 PM.png" alt="Video Editing" class="service-image">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-film"></i>
+            </div>
+            <h3>Video Editing</h3>
+            <p>Professional editing services with cinematic effects and color grading for impactful storytelling.</p>
+          </div>
+        </div>
+        
+        <!-- Service 4 -->
+        <div class="service-slide">
+          <img src="public/assets/ChatGPT Image May 11, 2025, 09_18_47 PM.png" alt="Discord Bot" class="service-image">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fab fa-discord"></i>
+            </div>
+            <h3>Discord Bots</h3>
+            <p>Custom Discord bots to automate tasks, moderate channels, and enhance community engagement.</p>
+          </div>
+        </div>
+         <!-- Service 5 -->
+        <div class="service-slide">
+          <img src="public/assets/ChatGPT Image May 11, 2025, 09_04_18 PM.png" alt="Web Design" class="service-image">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-object-group"></i>
+            </div>
+            <h3>UI&UX Design</h3>
+            <p>Intuitive interfaces and seamless user experiences that drive engagement and conversions.</p>
+          </div>
+        </div>
+         <!-- Service 6 -->
+        <div class="service-slide">
+          <img src="public/assets/ChatGPT Image May 2, 2025, 06_35_39 PM.png" alt="Web Design" class="service-image">
+          <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3>Mobile App Development</h3>
+            <p>Custom iOS and Android apps built with Flutter/React Native for cross-platform efficiency.</p>
+          </div>
+        </div> 
+           <!-- Service 7 -->
+          <div class="service-slide">
+            <img src="public/assets/ChatGPT Image May 11, 2025, 09_10_15 PM.png" alt="Web Design" class="service-image">
+            <div class="service-content">
+            <div class="service-icon">
+              <i class="fas fa-bullhorn"></i>
+            </div>
+            <h3>Digital Marketing</h3>
+            <p>Comprehensive strategies including SEO, PPC, and social media to grow your business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="mobile-hint">Tap on any service to view details</div>
+    
+    <div class="carousel-dots">
+      <!-- Dots will be added by JavaScript -->
+    </div>
+  </section>
+  <!-- Giveaway Section -->
+<!-- Giveaway Section -->
+<section id="giveaway" class="giveaway-section">
+  <h2 class="giveaway-title">GIVE AWAY</h2>
+  
+  <div class="giveaway-content">
+    <div class="giveaway-image">
+      <img src="public/assets/WhatsApp Image 2025-05-10 at 4.37.45 PM.jpeg" alt="Giveaway Preview" class="giveaway-img">
+    </div>
+    
+    <div class="giveaway-text">
+      <p>
+        We offer an exclusive entertainment suite including:
+        <span class="highlight">10-player Minecraft Realm, integrated Discord games and many others</span>. Monthly giveaways bring rewards 
+        and joy to our community members.
+      </p>
+      
+      <div class="giveaway-footer">
+        <h3 class="upcoming-events">UPCOMING EVENTS</h3>
+        <a href="https://discord.com/invite/HsxyQnzP" class="view-all-btn">VIEW ALL <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Join Community Section -->
+<!-- Add this AFTER your Giveaway section but BEFORE the footer -->
+<section id="join-community" class="community-section" style="margin-top: 80px;">
+  <div class="community-container">
+    <h2 class="community-title">JOIN OUR <span>COMMUNITY</span></h2>
+
+    
+    <a href="https://discord.com/invite/HsxyQnzP" target="_blank" class="discord-link">
+      <div class="discord-logo">
+        <i class="fab fa-discord"></i>
+      </div>
+      <span>Join Discord Server</span>
+    </a>
+  </div>
+</style>
+
+<style>
+  /* Isolated Community Section Styles */
+  #join-community.community-section {
+    background: black;
+    text-align: center;
+    border-top: 1px solid rgba(160, 32, 240, 0.2);
+  }
+
+  #join-community .community-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  #join-community .community-title {
+    font-size: 3rem;
+    color: #a020f0; /* Using direct color instead of var() */
+    margin-bottom: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  #join-community .community-title span {
+    color: white;
+  }
+
+  #join-community .community-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 40px;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  #join-community .discord-link {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+
+  #join-community .discord-logo {
+    width: 100px;
+    height: 100px;
+    background: #5865F2;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 20px rgba(88, 101, 242, 0.3);
+  }
+
+  #join-community .discord-logo i {
+    font-size: 50px;
+    color: white;
+  }
+
+  #join-community .discord-link span {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: 'Orbitron', sans-serif;
+  }
+
+  #join-community .discord-link:hover .discord-logo {
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 15px 30px rgba(88, 101, 242, 0.4);
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    #join-community .community-title {
+      font-size: 2.5rem;
+    }
+    
+    #join-community .discord-logo {
+      width: 80px;
+      height: 80px;
+    }
+    
+    #join-community .discord-logo i {
+      font-size: 40px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #join-community .community-title {
+      font-size: 2rem;
+    }
+    
+    #join-community .community-subtitle {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+
+
+
+<!-- Contact Form Section -->
+<section id="contact" class="contact-section">
+  <h2>GET IN <span>TOUCH</span></h2>
+  
+  <div class="contact-container">
+    <div class="contact-content">
+      <form id="contactForm" action="https://formsubmit.co/zarxalon@gmail.com" method="POST">
+        
+        <!-- Anti-Spam Measures -->
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none">
+        
+        <!-- Email Configuration -->
+        <input type="hidden" name="_subject" value="New Message from Portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://yourportfolio.com/thank-you.html"> 
+        <input type="hidden" name="_cc" value="zarxalon@gmail.com">
+        
+        <!-- Form Fields -->
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required class="form-input">
+          <i class="fas fa-user icon"></i>
+        </div>
+        
+        <div class="form-group">
+          <input type="email" name="email" placeholder="E-mail" required class="form-input">
+          <i class="fas fa-envelope icon"></i>
+        </div>
+        
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" required class="form-input"></textarea>
+          <i class="fas fa-comment icon textarea-icon"></i>
+        </div>
+        
+        <button type="submit" class="submit-btn">
+          <span id="btnText">SEND MESSAGE</span>
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </form>
+      
+      <div id="formResponse"></div>
+    </div>
+    
+    <div class="contact-image">
+      <img src="public/assets/WhatsApp Image 2025-04-30 at 6.07.09 PM.jpeg" alt="Contact Illustration">
+    </div>
+  </div>
+</section>
+      
+  
+<!-- Sponsors Section -->
+<section id="sponsors" class="sponsors-section">
+  <div class="sponsors-container">
+    <h2 class="sponsors-title">TRUSTED & <span>SPONSORED BY</span></h2>
+    
+    <div class="sponsors-grid">
+      <!-- Sponsor Logo 1 -->
+      <div class="sponsor-card">
+        <img src="public/assets/Sponsor logo.png" alt="Sponsor 1" class="sponsor-logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="social-icons">
+      <a href="https://x.com/zarxalon"><i class="fab fa-twitter"></i></a>
+      <a href="https://discord.gg/HsxyQnzP"><i class="fab fa-discord"></i></a>
+     <!-- <a href="https://www.instagram.com/zarxalon?igsh=djJobnRrOTRtM3Vy"><i class="fab fa-instagram"></i></a>-->
+      
+    </div>
+    <h6> zarxalon@gmail.com </h6>
+    
+    <div class="footer-links">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p>&copy; 2025 Zarxalon Freelancing. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Simple form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Message sent! We will contact you soon.');
+      this.reset();
+    });
+// Add this to your existing JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+  const aboutSection = document.querySelector('.about-section');
+  
+  // Create an Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, {
+    threshold: 0.1
+  });
+
+  // Observe the about section
+  observer.observe(aboutSection);
+});
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('.submit-btn');
+  const btnText = document.getElementById('btnText');
+  const originalText = btnText.innerText;
+  const responseDiv = document.getElementById('formResponse');
+  
+  // Show loading state
+  submitBtn.disabled = true;
+  btnText.innerText = 'SENDING...';
+  responseDiv.style.display = 'none';
+  
+  // Create hidden iframe for silent submission
+  const iframe = document.createElement('iframe');
+  iframe.name = 'formsubmit-target';
+  iframe.style.display = 'none';
+  document.body.appendChild(iframe);
+  
+  // Submit form to iframe
+  form.target = 'formsubmit-target';
+  
+  iframe.onload = function() {
+    // Success state
+    submitBtn.disabled = false;
+    btnText.innerText = originalText;
+    
+    responseDiv.innerHTML = `
+      <div style="display:flex; align-items:center; gap:10px;">
+        <i class="fas fa-check-circle" style="color:#4BB543; font-size:1.5rem;"></i>
+        <p style="margin:0; color:white;">Message sent successfully!</p>
+      </div>
+    `;
+    responseDiv.style.display = 'block';
+    form.reset();
+    
+    // Remove iframe after 5 seconds
+    setTimeout(() => {
+      document.body.removeChild(iframe);
+      responseDiv.style.display = 'none';
+    }, 5000);
+  };
+  
+  form.submit();
+});
+ 
+ document.addEventListener('DOMContentLoaded', function() {
+      const slides = document.querySelectorAll('.service-slide');
+      const track = document.querySelector('.carousel-track');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      let currentIndex = 0;
+      
+      // Create dots
+      slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+      });
+      
+      // Handle slide activation
+      function toggleSlide(index) {
+        slides.forEach((slide, i) => {
+          if (i === index) {
+            slide.classList.toggle('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+        
+        // Update dots
+        document.querySelectorAll('.dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      }
+      
+      // Go to specific slide
+      function goToSlide(index) {
+        currentIndex = index;
+        const slide = slides[index];
+        track.scrollTo({
+          left: slide.offsetLeft - (window.innerWidth - slide.offsetWidth) / 2,
+          behavior: 'smooth'
+        });
+        toggleSlide(index);
+      }
+      
+      // Click/touch event
+      slides.forEach((slide, index) => {
+        slide.addEventListener('click', () => {
+          currentIndex = index;
+          toggleSlide(index);
+        });
+      });
+      
+      // Handle scroll events
+      let isScrolling;
+      track.addEventListener('scroll', () => {
+        clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+          const scrollPosition = track.scrollLeft + track.offsetWidth / 2;
+          slides.forEach((slide, index) => {
+            if (slide.offsetLeft <= scrollPosition && 
+                slide.offsetLeft + slide.offsetWidth > scrollPosition) {
+              currentIndex = index;
+              document.querySelectorAll('.dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+              });
+            }
+          });
+        }, 100);
+      }, { passive: true });
+      
+      // Initial positioning
+      window.addEventListener('resize', () => {
+        goToSlide(currentIndex);
+      });
+    });
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const form = e.target;
+  const submitBtn = form.querySelector('.submit-btn');
+  const btnText = document.getElementById('btnText');
+  const responseDiv = document.getElementById('formResponse');
+  
+  // Show loading state
+  submitBtn.disabled = true;
+  btnText.textContent = 'SENDING...';
+  responseDiv.style.display = 'none';
+  
+  try {
+    const response = await fetch(form.action, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json' },
+      body: new FormData(form)
+    });
+    
+    const result = await response.json();
+    
+    if (response.ok) {
+      responseDiv.innerHTML = `
+        <div class="success-message">
+          <i class="fas fa-check-circle"></i>
+          <p>Message sent! Check your email (including spam folder)</p>
+        </div>
+      `;
+      form.reset();
+    } else {
+      throw new Error(result.message || 'Delivery failed');
+    }
+  } catch (error) {
+    responseDiv.innerHTML = `
+      <div class="error-message">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>${error.message}. Please email directly to zarxalon@gmail.com</p>
+      </div>
+    `;
+  } finally {
+    responseDiv.style.display = 'block';
+    submitBtn.disabled = false;
+    btnText.textContent = 'SEND MESSAGE';
+  }
+});
+
+  </script>
+</body>
+</html>
